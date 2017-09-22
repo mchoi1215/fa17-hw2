@@ -1,4 +1,4 @@
-# Rails DeCal Fall 2016 Homework 2
+# Rails DeCal Fall 2017 Homework 2
 
 ## Introduction
 Hey there! Welcome to homework 2 of the Rails DeCal. By this week, the course will have covered routes, simple ruby syntax, and basic CRUD statements.
@@ -12,8 +12,8 @@ To start everything off, fork this repository - there should be a fork button on
 
 <b>After you fork</b>, run these commands to clone your newly forked repository:
 ```
-git clone https://github.com/your_username/fa16-hw2
-cd fa16-hw2
+git clone https://github.com/your_username/fa17-hw2
+cd fa17-hw2
 ```
 
 Next, install all the gems (Rails libraries) necessary by running:
@@ -42,30 +42,30 @@ Also, you'll see a lot of `<%= some_variable %>`. This is embedded ruby, which w
 ## Alright, lets get crackin':
 
 ### Question 1
-Here, we're going to look into a POST request.
+Here, we're going to look into a `POST` request.
 
-If you look closely at the code at home.html.erb, you'll see a bunch of confusing code like this:
+If you look closely at the code at `home.html.erb`, you'll see a bunch of confusing code like this:
 
 ```
 <%= form_tag stringify_path do... %>
 ```
 Don't worry if this is confusing to you. We'll be covering forms in the future. What **is** important is that a form POSTs a request to a endpoint/path.
 
-To fix the errors, route a path in the routes.rb file so that a POST request to `localhost:3000` (also known as the `root`) routes to the `stringify` method in `pages_controller.rb`.
+To fix the errors, route a path in the routes.rb file so that a POST request to `localhost:3000` (also known `'/'` or `root`) routes to the `stringify` method in `pages_controller.rb`. Be sure to give set the path prefix to `stringify` so we can reference it with the name  `stringify_path`
 
 Now that we've gone through that hassle, we now face our second problem. If you try to submit the form, you get a views error message (missing template pages/stringify)!
 
 To fix this, update `app/controllers/concerns/stringify` such that the `what_am_i` method returns "You are nothing!" if `@name` or `@adjective` are blank, but returns "<em>your_name</em> is so <em>your_adjective</em>" if `@name` and `@adjective` are not blank.
 
-Hint: The method `blank?` may be helpful.
+Hint: The method `blank?` may be helpful. Also refer to the first lecture if you need a refresher on boolean logic or how to structure if-else blocks.
 
-Following, create a `stringify.html.erb` view and add
+Once you're done, create a `stringify.html.erb` view (where should this file go?) and add
 
 ```
 <%= @text %>
 ```
 
-to the view (where should this file go?). Now when you submit the form, nothing should error and you should see the result of your `what_am_i` method.
+to the view. Now when you submit the form, nothing should error and you should see the result of your `what_am_i` method.
 
 
 ### Question 2
@@ -82,6 +82,9 @@ Write an `initialize` method and an instance method `bar` in `Foobar` so that wh
 
 Uncomment the code in `pages_controller.rb` and validate your changes.
 
+**Hint 1**: You may lookup how you can use the symbol method `to_s`
+**Hint 2**: the `bar` method will take in two arguments/parameters (one is a hash)
+
 ### Question 3
 
 Now we're going to look at more routing + creating classes!
@@ -92,23 +95,27 @@ Let's fix this bug.
 
 Step 1: `<%= form_tag age_path, method: :put do %>` tells Rails to create a `PUT` request to `/age` on form submission. Create an appropriate route in `routes.rb` to handle the form submission; direct it to the `person` method in `pages_controller.rb`, rather than the `age` method. This means that a GET request to `/age` will be handled by a different action than a PUT request to `/age`!
 
-Step 2: in `/controllers/concerns`, implement a `Person` class whose `initialize` method accepts a name and age and creates an instance variable `@nickname` that is the first four letters of `@name`.
+Step 2: in `/controllers/concerns`, implement a `Person` class whose `initialize` method accepts a name and age and creates an instance variable `@nickname` that is the first four letters of `@name` (use string/array splicing).
+
 The `Person` class should have the following methods:
 - `introduce`: returns a string with the instance's name and age
-- `birth_year`: calculates what year they were born given an age in years
+- `birth_year`: calculates what year they were born given an age in years (Bonus: try to implement this using `Time.now.year`)
+    - Hint: the string `to_i` method might come in handy here
 - `nickname`: returns the nickname
-- `fib_number`: returns the `@age`-th fib number (ex: if I am 21, return the 21th fib number).
 
 Submit the Question 3 form (which will direct you to `localhost:3000/age`) and validate you did this correctly.
 
-Note: don't worry about blank form edge cases (which we practiced handling before) and formatting.
+Note: don't worry about blank form edge cases (which we practiced handling in Q1) and formatting.
 
 ### Question 4
 Let's practice some HTML/CSS:
 
 Create a view that can be seen if you go to `localhost:3000/me`. Just a friendly reminder, to do this you'll have to create a route, a controller action, and a view.
 
-In this view, render your name, a picture of yourself (upload your file into `assets/images`), where you're from (give it a green background with white text), your year (freshman/sophomore/junior/senior/etc), a fun fact (make the text bold and red!), and what you're most excited about in this class (make the text underlined and change the color to anything you want!)
+In this view, render your name, where you're from, your year (freshman/sophomore/junior/senior/etc), a fun fact, and what you're most excited about in this class
+
+**Bonus**: add and render a picture of yourself (upload your file into `assets/images`)
+**Bonus 2**: use CSS to style your text (add background colors, underline it, anything you want!)
 
 Go to `localhost:3000/me` and validate you did this correctly.
 
