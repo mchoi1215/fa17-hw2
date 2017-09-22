@@ -83,6 +83,7 @@ Write an `initialize` method and an instance method `bar` in `Foobar` so that wh
 Uncomment the code in `pages_controller.rb` and validate your changes.
 
 **Hint 1**: You may lookup how you can use the symbol method `to_s`
+
 **Hint 2**: the `bar` method will take in two arguments/parameters (one is a hash)
 
 ### Question 3
@@ -93,9 +94,9 @@ If you look at the Question 3 section on the home page, you'll see that we have 
 
 Let's fix this bug.
 
-Step 1: `<%= form_tag age_path, method: :put do %>` tells Rails to create a `PUT` request to `/age` on form submission. Create an appropriate route in `routes.rb` to handle the form submission; direct it to the `person` method in `pages_controller.rb`, rather than the `age` method. This means that a GET request to `/age` will be handled by a different action than a PUT request to `/age`!
+** Step 1 : ** `<%= form_tag age_path, method: :put do %>` tells Rails to create a `PUT` request to `/age` on form submission. Create an appropriate route in `routes.rb` to handle the form submission; direct it to the `person` method in `pages_controller.rb`, rather than the `age` method. This means that a GET request to `/age` will be handled by a different action than a PUT request to `/age`!
 
-Step 2: in `/controllers/concerns`, implement a `Person` class whose `initialize` method accepts a name and age and creates an instance variable `@nickname` that is the first four letters of `@name` (use string/array splicing).
+** Step 2: ** in `/controllers/concerns`, implement a `Person` class whose `initialize` method accepts a name and age and creates an instance variable `@nickname` that is the first four letters of `@name` (use string/array splicing).
 
 The `Person` class should have the following methods:
 - `introduce`: returns a string with the instance's name and age
@@ -115,6 +116,7 @@ Create a view that can be seen if you go to `localhost:3000/me`. Just a friendly
 In this view, render your name, where you're from, your year (freshman/sophomore/junior/senior/etc), a fun fact, and what you're most excited about in this class
 
 **Bonus**: add and render a picture of yourself (upload your file into `assets/images`)
+
 **Bonus 2**: use CSS to style your text (add background colors, underline it, anything you want!)
 
 Go to `localhost:3000/me` and validate you did this correctly.
