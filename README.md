@@ -94,9 +94,9 @@ If you look at the Question 3 section on the home page, you'll see that we have 
 
 Let's fix this bug.
 
-** Step 1 : ** `<%= form_tag age_path, method: :put do %>` tells Rails to create a `PUT` request to `/age` on form submission. Create an appropriate route in `routes.rb` to handle the form submission; direct it to the `person` method in `pages_controller.rb`, rather than the `age` method. This means that a GET request to `/age` will be handled by a different action than a PUT request to `/age`!
+**Step 1**: `<%= form_tag age_path, method: :put do %>` tells Rails to create a `PUT` request to `/age` on form submission. Create an appropriate route in `routes.rb` to handle the form submission; direct it to the `person` method in `pages_controller.rb`, rather than the `age` method. This means that a GET request to `/age` will be handled by a different action than a PUT request to `/age`!
 
-** Step 2: ** in `/controllers/concerns`, implement a `Person` class whose `initialize` method accepts a name and age and creates an instance variable `@nickname` that is the first four letters of `@name` (use string/array splicing).
+**Step 2**: in `/controllers/concerns`, implement a `Person` class whose `initialize` method accepts a name and age and creates an instance variable `@nickname` that is the first four letters of `@name` (use string/array splicing).
 
 The `Person` class should have the following methods:
 - `introduce`: returns a string with the instance's name and age
