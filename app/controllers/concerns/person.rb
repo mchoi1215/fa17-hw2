@@ -8,18 +8,15 @@ class Person
   end
 
   def nickname
-    # YOUR IMPLEMENTATION HERE
     @nickname
   end
 
   def birth_year
-    # YOUR IMPLEMENTATION HERE
     Time.now.year - @age.to_i
   end
 
   def introduction
-    # YOUR IMPLEMENTATION HERE
-    'Hello, my name is ' + @nickname + ' and I am ' + @age + ' years old'
+    'Hello, my name is %s and I am %s years old' % [@nickname, @age]
   end
 
 end

@@ -10,6 +10,6 @@ class Stringify
   	if @name.blank? || @adjective.blank?
   		return 'You are nothing!'
   	end
-  	@name + ' is so ' + @adjective
+    '%s is so %s' % [@name, @adjective]
   end
 end
